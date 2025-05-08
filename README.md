@@ -3,7 +3,7 @@ CSCB CEKN Final Project
 
 ### To install:
 You can run  
-!pip install https://github.com/biancakolim/inferKat3 
+!pip install git+https://github.com/biancakolim/inferKat3 
 in whatever environment you're using, or clone the repository to your computer using  
 ! git clone https://github.com/biancakolim/inferKat3
 ! cd inferKat3  
