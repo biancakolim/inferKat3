@@ -11,7 +11,7 @@ from .filtering import (
     second_filter
 )
 from .driver import inferKat
-from .cleaning import cleanAd, nodmaizeAd
+from .cleaning import cleanAd, normalizeAd
 from .filtering import (
     filter_dr, 
     remove_cell_cycle, 
