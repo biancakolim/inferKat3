@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='inferKat2',
+    name='inferKat3',
     version='0.1',
     packages=find_packages(),
     install_requires=[
@@ -12,6 +12,7 @@ setup(
         'infercnvpy',
         'hmmlearn', 
         'pykalman',
+        'numpy'
     ],
     author='CEKN',
     description='CSCB CEKN Final Project Package',
