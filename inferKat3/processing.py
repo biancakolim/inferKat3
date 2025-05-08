@@ -1,4 +1,4 @@
-import np as np
+import numpy as np
 
 def smooth_matrix(expr, gaussian_sigma=2, use_kalman=False):
     '''
