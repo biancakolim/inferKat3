@@ -16,7 +16,7 @@ from .filtering import (
     filter_dr, 
     remove_cell_cycle, 
     remove_hla, 
-    second_filter
+    second_filter,
     filter_by_length
 )
 from .plotting import (
@@ -27,7 +27,7 @@ from .plotting import (
 from .segmentation import (
     segment_cna_clusterwise, 
     annotate_cnv_regions, 
-    run_hmm_cnv_segmentation, 
+    run_hmm_cnv_segmentation 
 )
 from .imports import *
 from .from_imports import *
