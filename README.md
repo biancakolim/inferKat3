@@ -1,12 +1,12 @@
-# inferKat2
+# inferKat3
 CSCB CEKN Final Project
 
 ### To install:
 You can run  
-!pip install git+https://github.com/Frances-Cockburn/inferKat2.git  
+!pip install https://github.com/biancakolim/inferKat3 
 in whatever environment you're using, or clone the repository to your computer using  
-! git clone https://github.com/Frances-Cockburn/inferKat2.git  
-! cd inferKat2  
+! git clone https://github.com/biancakolim/inferKat3
+! cd inferKat3  
 ! pip install .  
 
 
