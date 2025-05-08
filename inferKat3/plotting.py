@@ -78,9 +78,9 @@ def plot_heatmap_from_adata(adata, use_layer=None, log=True, standard_scale=None
 
 # Create cell-level summaries
 def summarize_state(row, target):
-    return ", ".join([region for region, call in zip(bin_coords, row) if call == target])
+    # return ", ".join([region for region, call in zip(bin_coords, row) if call == target])
 
-adata.obs["hmm_gain_regions"] = cnv_df.apply(lambda x: summarize_state(x, "gain"), axis=1)
-adata.obs["hmm_loss_regions"] = cnv_df.apply(lambda x: summarize_state(x, "loss"), axis=1)
+    adata.obs["hmm_gain_regions"] = cnv_df.apply(lambda x: summarize_state(x, "gain"), axis=1)
+    adata.obs["hmm_loss_regions"] = cnv_df.apply(lambda x: summarize_state(x, "loss"), axis=1)
 
-return adata
+    return adata
