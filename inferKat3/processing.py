@@ -39,7 +39,7 @@ def smooth_matrix(expr, gaussian_sigma=2, use_kalman=False):
     return smoothed.T  # Return to original shape: genes × cells
 
 
-def synthetic_baseline(norm_mat: np.ndarray, gene_names: list[str], cell_names: list[str], min_cells: int = 10, max_k: int = 6, seed: int = 123):
+def synthetic_baseline(norm_mat: numpy.ndarray, gene_names: list[str], cell_names: list[str], min_cells: int = 10, max_k: int = 6, seed: int = 123):
     '''
     Estimate synthetic baseline using intra-normal GMM-like approach.
 
@@ -56,7 +56,7 @@ def synthetic_baseline(norm_mat: np.ndarray, gene_names: list[str], cell_names: 
         syn_df (pd.DataFrame): synthetic baseline (genes × clusters)
         cl_labels (np.ndarray): cluster labels per cell (same order as input)
     '''
-    np.random.seed(seed)
+    numpy.random.seed(seed)
     norm_df = pd.DataFrame(norm_mat, index=gene_names, columns=cell_names)
 
     # Compute pairwise distances between cells
@@ -68,7 +68,7 @@ def synthetic_baseline(norm_mat: np.ndarray, gene_names: list[str], cell_names: 
     cl_labels = cut_tree(linkage_matrix, n_clusters=k).flatten()
 
     # Reduce k until all clusters have min_cells
-    while np.any(np.bincount(cl_labels) < min_cells):
+    while numpy.any(numpy.bincount(cl_labels) < min_cells):
         k -= 1
         if k < 2:
             break
@@ -77,7 +77,7 @@ def synthetic_baseline(norm_mat: np.ndarray, gene_names: list[str], cell_names: 
     # Prepare outputs
     expr_relat = []
     syn_cols = []
-    valid_clusters = np.unique(cl_labels)
+    valid_clusters = numpy.unique(cl_labels)
 
     for i in valid_clusters:
         cell_mask = cl_labels == i
@@ -90,7 +90,7 @@ def synthetic_baseline(norm_mat: np.ndarray, gene_names: list[str], cell_names: 
         sd = cluster_data.std(axis=1)
 
         # Sample synthetic baseline from N(0, sd)
-        syn_norm = np.random.normal(loc=0, scale=sd)
+        syn_norm = numpy.random.normal(loc=0, scale=sd)
         syn_cols.append(pd.Series(syn_norm, index=norm_df.index, name=f"cluster_{i}"))
 
         # Subtract from cluster cells
