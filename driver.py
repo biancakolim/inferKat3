@@ -22,7 +22,6 @@ def inferKat(adata, set_min_genes=500, low_dr = 0.02, high_dr = 0.98, min_genes_
   print("Step 3: smoothing data with Gaussian filter...")
   expr = ad_filt4.layers['counts'] if 'counts' in ad_filt4.layers else ad_filt4.X.toarray()
   norm_mat_smooth = smooth_matrix(expr)
-  np.save('/content/drive/MyDrive/norm_mat_smooth.npy', norm_mat_smooth) # save in case it crashes midway
   ad_filt4.layers["smoothed"] = norm_mat_smooth # put back in adata
 
   print("Step 4: select and calculate baseline expression...")

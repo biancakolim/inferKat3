@@ -1,3 +1,4 @@
+# Preprocessing and filtering step
 
 # Limit noise, doublets, and low quality reads for more efficient downstream analysis
 def cleanAd(ad, filter_mt=True, set_pct_counts_mt=20, filter_counts=True, set_min_genes=500, set_max_counts=30000, set_min_cells=3):
@@ -39,3 +40,24 @@ def normalizeAd(ad):
   sc.pp.normalize_total(adNorm , target_sum=1e4)
   sc.pp.log1p(adNorm)
   return adNorm
+
+# Detection rate
+def filter_dr(adata, low_dr=0.02, high_dr=0.98):
+  expression_matrix = adata.layers['counts'].toarray() if 'counts' in adata.layers else adata.X.toarray()
+  detection_rate = np.sum(expression_matrix > 0, axis=0) / expression_matrix.shape[0]
+  filtered_genes = detection_rate > low_dr
+  ad_filtered = adata[:, filtered_genes].copy()
+  print(f"{filtered_genes.sum()} genes passed low detection rate filtering")
+
+  # quality check
+  num_genes = ad_filtered.shape[1]
+  if num_genes < 7000:
+      print("WARNING: low data quality; assigned low_dr to high_dr...")
+      high_dr = low_dr
+      warning = "low data quality"
+  else:
+      warning = "data quality is ok"
+      high_dr = high_dr
+  print(warning)
+
+  return ad_filtered, high_dr

@@ -7,6 +7,7 @@ import infercnvpy as cnv
 import matplotlib.pyplot as plt
 import warnings
 import seaborn as sns
+import scipy.ndimage as ndi
 
 warnings.simplefilter("ignore")
 
