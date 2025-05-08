@@ -2,7 +2,7 @@
 from .processing import (
     synthetic_baseline, 
     adjust_baseline, 
-    convert_to_genomic_bins
+    convert_to_genomic_bins, 
     smooth_matrix
 )
 from .filtering import (
